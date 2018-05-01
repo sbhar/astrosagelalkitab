@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script src="bootstrap.min.js"></script>
+<style>
+    #lalkitab {
+      text-align: center;
+    }
+
+    #lalkitab .card,
+    #lalkitab .card-header,
+    #lalkitab h5.mb-0 {
+      margin-bottom: 0;
+      padding-bottom: 0
+    }
+
+    #lalkitab h5.mb-0,
+    #lalkitab h1 {
+      text-align: center
+    }
+	#lalkitab .card-block {
+		height:auto;
+	}
+	#lalkitab .card-block p, #lalkitab .card-block blockquote p {
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+  </style>
+</head>
+<body id="bodyx">
+
+
+<div class="middler" id="lalkitab" style="display:block">
+    <h1>Lalkitab from
+      <a href="http://www.astrosage.com">Astrosage</a> (Vedic Astrology)</h1>
+<div id="lalkitabresults" align="center"></div>
+</div>
+
+<script src="domJSON.js"></script>
+<script>
+
+
+$(function(){
+	$.get("lalkitab.json").done(function (data) {
+	//$.get("sgi.json").done(function (data) {
+		//console.log(data);
+		var obj = $.parseJSON(data);
+		//console.log(obj);
+		var DOMDocumentFragment = domJSON.toDOM(obj);
+		$('#lalkitabresults').html(DOMDocumentFragment);
+	}); 
+	
+	
+	
+});
+</script>
+</body>
+</html>
